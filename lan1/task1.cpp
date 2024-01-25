@@ -1,7 +1,18 @@
-for(int i=0;i<num_std;i++){
-        cout<<"Enter Student"<<i+1<<"course"<<endl;
-        for(int j=0;j<3;j++){
-            cout<<"Enter Course"<<j+1<<endl;
-            cin>>arr[i][j];
-        }
+#include<iostream>
+using namespace std;
+int main(){
+    int num;
+    if(num<0){
+        cout<<"enter correct value";
     }
+    cout<<"Enter Value to check prime";
+    cin>> num;
+
+   for(int i=2;i<num/2;i++){
+        if(num%i == 0){
+            cout<<"Is prime";
+            return 0;
+        }
+   }
+   cout<<"not prime";
+}
