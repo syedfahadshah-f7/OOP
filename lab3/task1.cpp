@@ -11,10 +11,6 @@ class boared_marker{
         refillable = refill;
         ink_status = ink;
     }
-    void getter(){
-        cout<<"---Boared Marker---- "<<endl<< "Color = "<< color<<endl<< "Company : "<< company<<endl<<" Refilable : "
-        << refillable <<endl<<"Ink Status : "<< ink_status<<endl;
-    }
     void check(){
         if( ink_status == 1){
             cout<<"You can write with boared marker"<<endl;
@@ -31,12 +27,16 @@ class boared_marker{
             cout<<"Marker is not refilable "<<endl;
         }
     }
+     void getter(){
+        cout<<"---Boared Marker---- "<<endl<< "Color = "<< color<<endl<< "Company : "<< company<<endl; 
+        refilable(); 
+        check();
+    }
 };
 int main(){
     boared_marker obj;
     obj.setter("Dollar","Black",true,false);
     obj.getter();
-    obj.check();
-    obj.refilable();
+
     return 0;
 }
