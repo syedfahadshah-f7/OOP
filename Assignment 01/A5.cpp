@@ -52,9 +52,9 @@ class BOGOCoupon {
 
         bool isValid(float time) {
             if(validFrom< time && time<validUntil){
-                cout<<"COUPON TIME IS VALID  "<<endl;
+                return 1;
             }else{
-                cout<<"COUPON TIME IS NOT VALID  "<<endl;
+                return 0;
             }
         }
 };
@@ -64,9 +64,11 @@ class User {
     BOGOCoupon  couponsList[15];
     int age, mobileNumber;
     
-    User(string n,int a,int mN): name(n), age(a), mobileNumber(mN){}
+    
     public : 
-    static int counter;
+    User(){}
+    User(string n,int a,int mN): name(n), age(a), mobileNumber(mN){}
+     int counter =0;
         void accumulateCoupon() {
             string coupon_code,  restaurant_code;
             float valid_from, valid_until;
@@ -84,6 +86,8 @@ class User {
             couponsList[counter].validFrom  = valid_from;
             couponsList[counter].validUntil  = valid_until;
             if(hasValidCoupon(couponsList[counter], coupon_code) && redeemCoupon(coupon_code)){
+                
+                cout<<"COUPON IS VALID  "<<endl;
                 counter++;
             }
             
@@ -94,6 +98,7 @@ class User {
                 return 1;
             }else{
                 cout<<"RESTAURENT CODE AND COUPON CODE IS DIFERENT "<<endl;
+                return 0;
             }
         }
         
@@ -113,6 +118,15 @@ int main() {
     r2.setMenuAndPriceList("Binary Burger", "Quantum", "Quinoa",500.0,780.0,900.5);
 
 
+    cout<<"DISPLAYING MENU OF FOOD HAVEN "<< endl;
+    r1.displayMenu();
+    cout<<"DISPLAYING MENU OF PIXEL BITES "<< endl;
+    r2.displayMenu();
+    User u1,u2;
 
+    u1= User("FAHAD", 18, 31639);
+    u2= User("HAMMAD", 19, 28802);
+    u1.accumulateCoupon();
+    u2.accumulateCoupon();
     return 0;
 }
