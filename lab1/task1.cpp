@@ -1,3 +1,7 @@
+/*programmer:Syed Fahad Faheem Shah
+roll num: (23k-0062)
+  date:2/26/2024
+ */
 #include<iostream>
 using namespace std;
 int main(){
