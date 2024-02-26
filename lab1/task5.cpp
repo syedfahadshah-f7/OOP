@@ -1,4 +1,7 @@
-// Online C++ compiler to run C++ program online
+/*programmer:Syed Fahad Faheem Shah
+roll num: (23k-0062)
+  date:2/26/2024
+ */
 #include <iostream>
 #include <string>
 using namespace std;
