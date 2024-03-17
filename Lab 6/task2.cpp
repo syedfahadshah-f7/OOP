@@ -1,71 +1,76 @@
 #include<iostream>
+#include<vector>
+#include<cstdlib> // for rand() function
+
 using namespace std;
 
-class BankAccount{
-    private:
-    int accountld;
-    double balance;
-    int *transationHistory;
-    int numTransations;
-    public:
-    BankAccount(){}
-    BankAccount(int accountld, double balance, int numTransations){
-            this->accountld = accountld;
-            this->balance = balance;
-            this->numTransations = numTransations;
-            transationHistory = new int[numTransations];
-            for (int i = 0; i < numTransations; i++)
-            {
-                cout<<"Enter Transation History num # "<<i+1<<endl;
-                cin>>transationHistory[i];
-            }
-            
-    }
-    BankAccount(BankAccount& obj){
-        accountld = obj.accountld;
-        balance = obj.balance;
-        numTransations = obj.numTransations;
-        transationHistory = new int[numTransations];
-        for (int  i = 0; i < numTransations; i++)
-        {
-            transationHistory[i] = obj.transationHistory[i];
+class Image {
+private:
+    int width, height;
+    int* data;
+
+public:
+    // Constructors
+    Image(int h, int w, vector<int>& imagedata) : height(h), width(w) {
+        data = new int[w * h];
+        for (int i = 0; i < w * h; i++) {
+            data[i] = imagedata[i];
         }
     }
 
-    void display(){
-        cout<<"Account ID: "<< accountld<<endl<<" Balance: "<<balance<<endl;
-        for (int i = 0; i < numTransations; i++)
-        {
-           cout<<"Transation History # "<<i+1<<" : "<<transationHistory[i]<<endl;
+    // Copy constructor
+    Image(const Image& obj) : width(obj.width), height(obj.height) {
+        data = new int[width * height];
+        for (int i = 0; i < width * height; i++) {
+            data[i] = obj.data[i];
         }
     }
-    void update(int new_transation){
-         delete[] transationHistory;
-         transationHistory = new int[new_transation];
-         cout<<"Enter Details of new transation !!!"<<endl;
-          for (int i = 0; i < numTransations; i++)
-            {
-                cout<<"Enter Transation History num # "<<i+1<<" :"<<endl;
-                cin>>transationHistory[i];
-            }
+
+    // Destructor
+    ~Image() {
+        delete[] data;
     }
-           ~BankAccount(){
-        delete[] transationHistory;
+
+    // Display function
+    void display() {
+        for (int i = 0; i < height; ++i) {
+            for (int j = 0; j < width; ++j) {
+                cout << data[i * width + j] << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+
+    // Update function
+    void update() {
+        for (int i = 0; i < width * height; i++) {
+            if (data[i] <= 0) {
+                data[i] = rand() % 255 + 1;
+            }
+        }
     }
 };
 
-int main(){
-    BankAccount sir_talha(6666,1200000.45,2),fahad(sir_talha);
-    cout<<"DISPLAYING SIR TALHA ACCOUNT: "<<endl<<endl;
-    sir_talha.display();
-    cout<<"DISPLAYING FAHAD ACCOUNT: "<<endl<<endl;
-    fahad.display();
-    cout<<"CALLING TRANSATION HISTORY: "<<endl<<endl;
-    sir_talha.update(3);
-    cout<<"After updating !!!!!"<<endl<<endl;
-    cout<<"DISPLAYING SIR TALHA ACCOUNT: "<<endl<<endl;
-    sir_talha.display();
-    cout<<"DISPLAYING FAHAD ACCOUNT: "<<endl<<endl;
-    fahad.display();
+int main() {
+    vector<int> imagedata = {2, 3, 1, 0, -1};
+    Image obj1(2, 3, imagedata);
+    // Calling copy constructor
+    Image obj2(obj1);
+
+    cout << "Displaying Original Data: " << endl;
+    obj1.display();
+    cout << "Displaying Copy Constructor Data: " << endl;
+    obj2.display();
+
+    // Calling update function
+    obj1.update();
+    obj2.update();
+
+    cout << "Displaying Obj1 Data: " << endl;
+    obj1.display();
+    cout << "Displaying Obj2 Data: " << endl;
+    obj2.display();
+
     return 0;
 }
