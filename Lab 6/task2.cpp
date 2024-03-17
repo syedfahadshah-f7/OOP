@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-#include<cstdlib> // for rand() function
+#include<cstdlib> 
 
 using namespace std;
 
