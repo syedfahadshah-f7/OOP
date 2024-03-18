@@ -51,9 +51,9 @@ class car{
     steering s;
     public:
     car(){ }
-    car( wheels* w, headlights* h1){
-        eg = engine(150);
-        s = steering("Leather");
+    car( wheels* w, headlights* h1,int hp,string material){
+        eg = engine(hp);
+        s = steering(material);
         this->eg = eg;
         this->h1 = h1;
         this->w = w;
@@ -68,12 +68,10 @@ class car{
     }
 };
 int main(){
-   // engine e(150);
-    wheels* w = new wheels(18);
-    headlights* h= new headlights("ABC");
-   // steering s("Leather");
+    wheels w = wheels(18);
+    headlights h= headlights("ABC");
     car c;
-    c = car(w,h);
+    c = car(&w,&h,150,"leather");
     c.display();
     return 0;
 }
