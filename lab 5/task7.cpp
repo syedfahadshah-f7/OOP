@@ -20,8 +20,8 @@ class menu_item{
     }
 };
 class menu{
-    vector<menu_item> items;
     public:
+    vector<menu_item> items;
     void add(const menu_item& item){
         items.push_back(item);
     }
@@ -51,29 +51,25 @@ class payments{
     }
 };
 class order{
-    vector<menu_item> items;
+    menu* MENU;
     payments pay;
     double payment;
     public:
     void add(const menu_item& item){
-        items.push_back(item);
+        MENU->add(item);
     }
     void calculate_bill(){
         payment = 0.0;
-        for(auto& item: items){
+        for(auto& item: MENU->items){
         payment += item.get_food_price();
         }
         pay.set_payment(payment);
     }
 
 };
-class restaurent_menu{
-    vector<menu_item>* m_i;
-    order o;
-    payments p;
-    menu* m;
-
-};
 int main(){
+    menu Menu;
+    order Order;
+    payments Payment
     return 0;
 }
