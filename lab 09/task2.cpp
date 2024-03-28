@@ -28,7 +28,7 @@ Circle(){
  double perimeter()const{
     return 2*pi*radius;
 }
- void display_properties(){
+ void display_properties()const{
     cout<<"Area: "<<area()<<endl
     <<"Perimeter: "<<perimeter()<<endl
     <<"Diameter: "<<radius*2<<endl;
@@ -50,7 +50,7 @@ Rectangle(){
  double perimeter()const{
     return 2*(length+width);
 }
- void display_properties(){
+ void display_properties()const{
     cout<<"Area: "<<area()<<endl
     <<"Perimeter: "<<perimeter()<<endl
     <<"Diagonal: "<<sqrt((length*length)+(width*width))<<endl;
@@ -71,7 +71,7 @@ Square(){
  double perimeter()const{
     return 4*length;
 }
- void display_properties(){
+ void display_properties()const{
     cout<<"Area: "<<area()<<endl
     <<"Perimeter: "<<perimeter()<<endl
     <<"Diagonal: "<<sqrt(2)*length<<endl;
@@ -98,7 +98,7 @@ double perimeter()const{
    
 }
  
- void display_properties(){
+ void display_properties()const{
     cout<<"Area: "<<area()<<endl
         <<"Perimeter: "<<perimeter()<<endl;
  }   
@@ -121,7 +121,7 @@ double perimeter()const{
    
 }
  
- void display_properties(){
+ void display_properties()const{
     cout<<"Perimeter: "<<perimeter()<<endl<<"Area: "<<area()<<endl;
  }
 };
@@ -129,9 +129,56 @@ int main(){
 cout<<"Werlcome to the Geometry CaLculator: "<<endl;
 string choise;
 int n;
+Shape *sptr;
+
 do{
-cout<<"Baray Mehrabani Shape Munthakib: "<<endl
-<<"1. Circle:"<<endl<<"2. Rectangle:"
-}while(choise == "NO");
+cout<<"Baray Mehrabani Shape Muntakhib karein: "<<endl
+<<"1. Circle:"<<endl<<"2. Rectangle:"<<endl<<
+"3. Triangle"<<endl<<"4. Equilateral Triangle"<<endl
+<<"5. Square"<<endl<<"CHOOSE: ";
+cin>>n;
+switch (n)
+{
+case 1:{
+    Circle cir;
+    sptr = &cir;
+    sptr->display_properties();
+    break;
+}
+
+case 2:{
+    Rectangle rect;
+    sptr = &rect;
+    sptr->display_properties();
+    break;
+}
+
+case 3:{
+    Triangle tri;
+    sptr = &tri;
+    sptr->display_properties();
+    break;
+}
+
+case 4:{
+    Equlateral_triangle eqt_tri;
+    sptr = &eqt_tri;
+    sptr->display_properties();
+    break;
+}
+   
+case 5:{
+    Square sqr;
+    sptr = &sqr;
+    sptr->display_properties();
+    break; 
+}
+        
+default:
+    break;
+}
+cout<<"kiya ap dobara Shape Muntakhib karna chahty hain? (yes/no):";
+cin>>choise;
+}while(choise == "Yes");
     return 0;
 }
