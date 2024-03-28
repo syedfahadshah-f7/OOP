@@ -104,9 +104,34 @@ double perimeter()const{
  }   
 };
 class Equlateral_triangle: public Triangle{
+public:
+Equlateral_triangle(){
+    cout<<"Enter length Of Side: ";
+    cin>>a;
+    b= a;
+    c=a;
     
+}
+double perimeter()const{
+    return a+b+c;
+}
+ double area()const{
+    double s = Triangle :: perimeter();
+    return sqrt( s*(s-a)*(s-b)*(s-c));
+   
+}
+ 
+ void display_properties(){
+    cout<<"Perimeter: "<<perimeter()<<endl<<"Area: "<<area()<<endl;
+ }
 };
 int main(){
-
+cout<<"Werlcome to the Geometry CaLculator: "<<endl;
+string choise;
+int n;
+do{
+cout<<"Baray Mehrabani Shape Munthakib: "<<endl
+<<"1. Circle:"<<endl<<"2. Rectangle:"
+}while(choise == "NO");
     return 0;
 }
