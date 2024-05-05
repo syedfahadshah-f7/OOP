@@ -1,7 +1,4 @@
-/*
-Name: Raghib Rizwan Rabani
-NU ID: 23K-0012
-*/
+
 #include<iostream>
 using namespace std;
 
